@@ -87,15 +87,28 @@ public class BackSystem extends Main {
 		}
 	}
 	void removeBook() {
-		System.out.println(" Remove mode is active now.");
-		System.out.print(" Enter the book Title or Serial no. :");
-		String id = sc.nextLine().trim();
-		for(int i = 0; i < arraylist.size();i++) {
-			if(id.equals(arraylist.get(i).getBookSerialNo()) || id.equals(arraylist.get(i).getBookName())) {
-				System.out.println(" Book details removed Successfully.");
-				arraylist.remove(i);
-			}
-		}
+    	System.out.println(" Remove mode is active now.");
+    	System.out.print(" Enter the book Title or Serial no. :");
+    	String id = sc.nextLine().trim();
+
+   		boolean found = false;
+
+    	for (int i = 0; i < arraylist.size(); i++) {
+
+        	if (id.equals(arraylist.get(i).getBookSerialNo()) ||
+            	id.equalsIgnoreCase(arraylist.get(i).getBookName())) {
+
+           		arraylist.remove(i);
+            	found = true;
+
+            	System.out.println(" Book details removed Successfully.");
+            	break; 
+        	}
+    	}
+
+    	if (!found) {
+        	System.out.println(" Book not found.");
+    	}
 	}
 	
 	String addName() {
@@ -193,5 +206,6 @@ public class BackSystem extends Main {
 	}
 	
 }
+
 
 
